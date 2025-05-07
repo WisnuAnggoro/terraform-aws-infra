@@ -1,7 +1,7 @@
-provider "aws" {
-  region = "eu-central-1"
+module "route53" {
+  source = "./modules/route53/route53-zone"
 }
 
-resource "aws_s3_bucket" "my_bucket" {
-  bucket = "bucket-unique-8439"
+module "storage" {
+  source = "./modules/storage/s3-bucket"
 }
