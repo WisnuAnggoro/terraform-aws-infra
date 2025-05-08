@@ -84,49 +84,22 @@ Now credentials are stored securely in:
 
 ```bash
 git clone https://github.com/WisnuAnggoro/terraform-aws-infra.git
-cd terraform-aws-infra/infra
+cd terraform-aws-infra
 ```
 
 ---
 
-### 4. Initialize Terraform
+## Usage examples
 
 ```bash
-terraform init
+make init           # Initializes Terraform
+make plan           # Plans infrastructure changes
+make apply          # Applies the plan
+make destroy        # Tears down infra
+make fmt            # Formats Terraform files
+make state-show RESOURCE=make state-show RESOURCE=module.storage.aws_s3_bucket.my_bucket
 ```
 
-This downloads the necessary providers and sets up the remote backend if configured.
-
----
-
-### 5. Plan Infrastructure Changes
-
-```bash
-terraform plan -var="aws_profile=my-terraform-profile"
-```
-
-Preview all actions Terraform will perform.
-
----
-
-### 6. Apply Infrastructure
-
-```bash
-terraform apply -var="aws_profile=my-terraform-profile"
-```
-
-Confirm with `yes` when prompted.
-
----
-
-### 7. Output
-
-After a successful apply, Terraform will output values like the public IP of your EC2 instance.
-
-```bash
-Outputs:
-instance_public_ip = "34.xxx.xxx.xxx"
-```
 
 ---
 
