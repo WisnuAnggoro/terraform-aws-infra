@@ -18,6 +18,7 @@ MODULES=(
   "autoscaling"
   "security_group"
   "route53"
+  "cloudfront"
 )
 
 # Prompt user for Terraform command
