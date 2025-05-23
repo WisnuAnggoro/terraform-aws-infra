@@ -11,8 +11,8 @@ resource "aws_cloudfront_distribution" "wisnuanggoro_com_distribution" {
   default_root_object = "index.html"
   is_ipv6_enabled     = true
   wait_for_deployment = true
+  aliases             = ["blog.wisnuanggoro.com"]
   # web_acl_id          = <WAF ACL ARN>
-  # aliases             = <URL Domain>
 
   origin {
     domain_name              = var.wisnuanggoro_com_static_site_bucket_regional_domain_name
@@ -42,7 +42,10 @@ resource "aws_cloudfront_distribution" "wisnuanggoro_com_distribution" {
   }
 
   viewer_certificate {
-    cloudfront_default_certificate = true
+    acm_certificate_arn            = var.wisnuanggoro_com_ssl_cert_arn
+    ssl_support_method             = "sni-only"
+    minimum_protocol_version       = "TLSv1.2_2021"
+    cloudfront_default_certificate = false
   }
 
   tags = {
